@@ -1,0 +1,20 @@
+.card-body ul li{
+  box-shadow: 0px 0px 2px gray;
+  padding: 5px 15px;
+  margin: 10px 0;
+  font-size: 15px;
+  vertical-align: middle;
+  font-weight: 600;
+}
+.card-body ul li input {
+  color: green;
+  margin-right: 5px;
+}
+
+.card-body ul li button  {
+  color: rgb(209, 209, 14) ;
+  background-color: initial;
+}
+.card-body ul li button:hover {
+  color: rgb(99, 99, 10);
+}
