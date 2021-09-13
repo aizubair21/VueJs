@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,shrink-to-fit=no"
+    />
+
+    <link rel="stylesheet" href="bootstrap-5.1.0-dist/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+    <link rel="shortcut " href="images/logo.svg">
+    <title>Ice Cream Builder</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- header start -->
+      <header>
+        <div class="container">
+          <div>
+            <img class="logo" src="images/logo.svg" alt="Logo" />
+          </div>
+          <div class="textRight">
+            <img src="images/vue.svg" alt="Vue.js" class="vueLogo" /><strong
+              >Vue.js</strong
+            >
+          </div>
+        </div>
+      </header>
+      <!-- header end -->
+
+      <!-- body start -->
+      <div class="mainBody" id="body">
+        <div class="container" id="iceCreamBuilder">
+          <!-- icecream start -->
+          <div>
+            <div class="icecream" id="icecream">
+            <p class="cone"></p>
+            <div
+                class="scoop"
+                v-for="cartItem in cart"
+                :class="cartItem.name.toLowerCase()"
+            ></div>
+            <div class="cherry" v-if="cart.length > 0"></div>
+            <div class="question" v-else></div>
+            </div>
+        </div>
+          <!-- ice cream end -->
+
+          <!-- builder start -->
+          <div id="builder">
+            <div class="builder">
+              <h3>
+                Build your cool Ice Cream
+                <span
+                  class="quantity"
+                  :style="cart.length === 0 ? {color: 'red'} : {color: 'green'}"
+                  > {{ cart.length}} </span
+                >
+              </h3>
+              <!-- items start -->
+              <div id="items">
+                <ul>
+                  <!-- item start -->
+                  <li
+                    class="item"
+                    id="'variant'+i"
+                    v-for="(variant, i) in variants"
+                  >
+                    <span> {{ variant.name}} </span>
+                    <div class="right">
+                      <button
+                        type="button"
+                        class="plus rounded"
+                        @click="addToCart(variant.id)"
+                      >
+                        +
+                      </button>
+                      <button
+                        type="button"
+                        class="minus rounded"
+                        @click="removeFromCart(variant.id)"
+                      >
+                        -
+                      </button>
+                    </div>
+                  </li>
+                  <!-- item end -->
+                </ul>
+              </div>
+              <!-- items end -->
+
+              <!-- total price start -->
+              <div class="total" id="total">
+                <div>Total Price</div>
+                <div>{{ total }} Tk</div>
+              </div>
+              <!-- total price end -->
+              <button type="button" class="order rounded " data-toggle="modal" data-target="#exampleModal" >
+                Proceed
+              </button>
+            </div>
+
+            <div id="exampleModal" class="modal fade" tableindex="-1" role="dialog" area-labelledby="exampleModalLabel" aria-Hidden="true">
+              <div class="backdrop" @click="hideOrderForm"></div>
+              <div class="modalBody">
+              <div class="formContainer" id="orderForm">
+                  <h1>Complete the form below and hit submit</h1>
+                  <form class="orderForm" @submit.prevent="onSubmit">
+                  <ul>
+                      <li>
+                      <input
+                          type="text"
+                          v-model="name"
+                          class="fieldStyle fieldSplit alignLeft"
+                          placeholder="Name"
+                      />
+                      <input
+                          type="text"
+                          v-model="phone"
+                          class="fieldStyle fieldSplit alignRight"
+                          placeholder="Phone no."
+                      />
+                      </li>
+                      <input
+                          type="hidden"
+                          v-model.number="total"
+                          class="fieldStyle fieldSplit alignRight"
+                      />
+                      </li>
+                      <li>
+                      <textarea
+                          v-model="address"
+                          class="fieldStyle"
+                          placeholder="Address"
+                      ></textarea>
+                      </li>
+                      <li>
+                      <input type="submit" value="Submit" />
+                      </li>
+                  </ul>
+                  </form>
+              </div>
+              </div>
+          </div>`
+            <!-- modal end -->
+          </div>
+          <!-- builder end -->
+        </div>
+      </div>
+      <!-- body end -->
+
+      <!-- footer start -->
+      <footer>
+        <div class="container footer " >
+          <div>Copyright &copy;2020.</div>
+          <div class="textRight">
+            Built by zubiar<span class="red">&hearts;</span> 
+            <a href="https://youtube.com/LearnwithSumit" target="_blank"
+              >Learn From Sumit Vai</a
+            >
+          </div>
+        </div>
+      </footer>
+      <!-- footer end -->
+    </div>
+    <script src="bootstrap-5.1.0-dist/js/bootstrap.min.js"></script>
+
+    <script src="main.js"> </script>
+    <!-- <script src="components/IceCream.js"></script> -->
+    <!-- <script src="components/IceCream.js"></script> -->
+    <!-- <script src="components/OrderForm.js"></script> -->
+    <!-- <script src="components/OrderForm.js"></script> -->
+    <!-- <script>
+      const mountedapp = app.mount("#app");
+    </script> -->
+  </body>
+</html>
