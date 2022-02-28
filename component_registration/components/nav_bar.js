@@ -8,6 +8,13 @@ Vue.component("my-header", {
             logo: "logo",
         }
     },
-    template:`<div>This is header or nav bar </div>`,
+    template:
+    `<div style="display: flex; justify-content-between">
+        <div> logo </div>
+        <div class="nav_link">
+            <ul style="display:flex">
+                <li style="list-style-type:none"><a style="text-decoration:none" href="#"> home</a></li>
+        </div>
+    </div>`,
 })
 
